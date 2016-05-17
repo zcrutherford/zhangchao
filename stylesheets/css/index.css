@@ -1,14 +1,22 @@
 #container {
 	
 }
+body {
+	overflow:auto; 
+	min-width:1090px;
+}
 #head {
 	width: 100%;
 	height: 79px;
 	margin-bottom: 24px;
 	background-color: #FFFFFF;
-	font-size: 14px;
 	padding-left:50px;
 	padding-right:50px;
+}
+#body {
+	width:1300px;
+	margin-left:auto;
+	margin-right:auto;
 }
 .nav-list {
 	height: 100%;
@@ -16,12 +24,12 @@
 }
 .nav-item {
 	height: 100%;
-	width: 70px;
+	width: 120px;
 	color: #000000;
 }
 .nav-item:hover {
 	height: 100%;
-	width: 70px;
+	width: 120px;
 	text-align:center;
 	color: #2db7f5;
 	border-bottom: 2px solid #2db7f5;
@@ -29,14 +37,13 @@
 }
 .nav-item-active {
 	height: 100%;
-	width: 70px;
+	width: 120px;
 	color: #2db7f5;
 	text-align:center;
 	border-bottom: 2px solid #2db7f5;
 }
 .nav-item-a {
 	height: 100%;
-	color: #000000;
 }
 .nav-item-a:hover {
 	height: 100%;
@@ -48,18 +55,26 @@
 }
 .head_left {
 	height: 100%;
-	width: 30%;
 	float: left;
-	line-height: 100px;
+	font-family: inherit;
+	font-weight: bolder;
+	font-size: 40px;
 }
 .head_right {
 	height: 100%;
-	width: 50%;
 	float: left;
 	text-align:center;
 	line-height: 59px;
+	font-family: "Microsoft Yahei","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-weight: bolder;
+	font-size: 20px;
+	margin-left:20px;
 }
-.logo {
-	height: 100%;
-	width: 20%;
+.head_searchbar {
+	height:100%;
+	float:right;
+}
+a:link ,a:visited, a:hover{
+	color : #000000;
+	text-decoration: none!important;
 }
