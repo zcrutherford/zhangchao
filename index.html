@@ -5,51 +5,105 @@
 <title>Insert title here</title>
 <script src="javascript/react/react.min.js"></script>
 <script src="javascript/react/react-dom.min.js"></script>
+<script src="javascript/flux/Dispatcher.js"></script>
 <script src="javascript/react/browser.min.js"></script>
-<script src="javascript/antd/antd.min.js"></script>
+<!-- <script src="javascript/antd/antd.min.js"></script> -->
 <link rel="stylesheet" type="text/css" href="stylesheets/bootstrap/bootstrap-3.3.0.min.css">
-<link rel="stylesheet" type="text/css" href="stylesheets/antd/antd.min.css">
+<!-- <link rel="stylesheet" type="text/css" href="stylesheets/antd/antd.min.css"> -->
 <link rel="stylesheet" type="text/css" href="stylesheets/css/global.css">
 <link rel="stylesheet" type="text/css" href="stylesheets/css/index.css">
 </head>
 <body>
-<div id="container">
-	<div id="head">
-		<div class="head_left">
-			<div style="height:100%;line-height:80px"><a href="#" style="height:100%;color:#2db7f5">小学堂</a></div>
-		</div>
-		<div class="head_right">
-			<ul class="nav nav-pills nav-list">
- 	 			<li role="presentation" class="nav-item"><a href="#" class="nav-item-a">首页</a></li>
- 	 			<li role="presentation" class="nav-item"><a href="#" class="nav-item-a">JAVA</a></li>
- 	 			<li role="presentation" class="nav-item"><a href="#" class="nav-item-a">前端</a></li>
- 	 			<li role="presentation" class="nav-item"><a href="#" class="nav-item-a">数据库</a></li>
- 	 			<li role="presentation" class="nav-item"><a href="#" class="nav-item-a">开源库</a></li>
-			</ul>
-		</div>
-		<div class="head_searchbar">
-			<div class="form-group form-inline" style="float:right;padding-top:24px">
-    			<input type="text" style="width:180px;" class="form-control" placeholder="搜索信息">
-    			<button type="button" style="" class="btn btn-primary">搜索</button>
-  			</div>
-		</div>
-	</div>
-	<div id="body"></div>
-	<div id="foot"></div>
-</div>
+<div id="container"></div>
 <script type="text/babel">
-var ArticleTitle = React.createClass({
-  render: function() {
-    return (
-      <div>
-        Hello, world! I am a CommentBox.
-      </div>
-    );
-  }
+var AppDispatcher = new Dispatcher();
+
+let Head_left = React.createClass({
+	render : function() {
+		return (<div className='head_left'><div className='head-logo'><a className='head-span'>{this.props.text}</a></div></div>);
+	}
 });
+let NavUl = React.createClass({
+	getInitialState: function() {
+    	return {active: 0};
+  	},
+	handleClick : function(index) {
+		this.setState({active : index});
+	},
+	render : function() {
+		return (
+			<ul className='nav nav-pills nav-list'>
+				{
+					this.props.items.map(function(item,i){
+						let liClassName = this.state.active == i ? 'nav-item-active' : 'nav-item';
+						let aClassName = this.state.active == i ? 'nav-item-a-active' : 'nav-item-a';
+						return (<li className={liClassName} onClick={this.handleClick.bind(this,i)}><a className={aClassName}>{item}</a></li>);
+					},this)
+				}
+			</ul>
+		);
+	}
+});
+let Head_right = React.createClass({
+	render : function() {
+		return (<div className='head_right'><NavUl items={[1,2,3,4,5]}/></div>);
+	}
+});
+let SearchBar = React.createClass({
+	render : function() {
+		return (
+			<div className='head_searchbar'>
+				<div className='form-group form-inline searchbar'>
+    				<input type='text' style={{width:150}} className='form-control' placeholder='搜索信息'></input>
+    				<button type='button' className='btn btn-primary'>搜索</button>
+  				</div>
+			</div>
+		);
+	}
+});
+let Head = React.createClass({
+	render : function() {
+		return (
+			<div className='head'>
+				<Head_left text="123"/>
+				<Head_right/>
+				<SearchBar/>
+			</div>
+		);
+	}
+});
+let Body = React.createClass({
+getInitialState: function() {
+    	return {data: []};
+  	},
+	render : function() {
+		return (
+			<div className='body'>
+				{
+					this.state.data.map(function(item,i){
+						return (
+							<div className='article'>{item.text}</div>
+						);
+					})
+				}
+			</div>
+		);
+	}
+});
+let Container = React.createClass({
+	render : function() {
+		return (
+			<div>
+				<Head/>
+				<Body items={[{"text": "1", "key":1},{"text": "1", "key":1},{"text": "2", "key":2},{"text": "3", "key":3},{"text": "4", "key":4}]}/>
+			</div>
+		);
+	}
+});
+
 ReactDOM.render(
-	<ArticleTitle />,
-	document.getElementById('body')
+	<Container/>,
+	document.getElementById('container')
 );
 </script>
 </body>

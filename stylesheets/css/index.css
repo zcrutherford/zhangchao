@@ -1,11 +1,10 @@
 #container {
 	
 }
-body {
-	overflow:auto; 
-	min-width:1090px;
+a {
+	cursor: pointer;
 }
-#head {
+.head {
 	width: 100%;
 	height: 79px;
 	margin-bottom: 24px;
@@ -13,16 +12,20 @@ body {
 	padding-left:50px;
 	padding-right:50px;
 }
-#body {
+.body {
+	height:500px;
 	width:1300px;
 	margin-left:auto;
 	margin-right:auto;
+	background-color:#FFFFFF;
 }
+
+/* Nav */
 .nav-list {
 	height: 100%;
 	float: right;
 }
-.nav-item {
+.nav-item, .na-item a {
 	height: 100%;
 	width: 120px;
 	color: #000000;
@@ -35,30 +38,42 @@ body {
 	border-bottom: 2px solid #2db7f5;
 	font-weight:bold;
 }
-.nav-item-active {
+.nav-item-active,.nav-item-active:hover {
 	height: 100%;
 	width: 120px;
-	color: #2db7f5;
 	text-align:center;
+	color: #2db7f5;
 	border-bottom: 2px solid #2db7f5;
 }
 .nav-item-a {
 	height: 100%;
+	color: #000000;
 }
 .nav-item-a:hover {
 	height: 100%;
 	color: #2db7f5;
 }
-.nav>li>a:hover,.nav>li>a:focus {
-	text-decoration: none;
-	background-color: #FFFFFF
+.nav-item-a-active,.nav-item-a-active:hover {
+	height: 100%;
+	color: #2db7f5;
 }
+.nav>li>a:hover,.nav>li>a:focus,.nav>li>a:link,.nav>li>a:visited {
+	text-decoration: none;
+	background-color: #FFFFFF;
+}
+
 .head_left {
 	height: 100%;
 	float: left;
 	font-family: inherit;
 	font-weight: bolder;
 	font-size: 40px;
+}
+.head-logo,.head-span,.head-logo>a:hover {
+	height:100%;
+	line-height:80px;
+	color:#2db7f5;
+	text-decoration: none;
 }
 .head_right {
 	height: 100%;
@@ -74,7 +89,14 @@ body {
 	height:100%;
 	float:right;
 }
-a:link ,a:visited, a:hover{
-	color : #000000;
-	text-decoration: none!important;
+.searchbar {
+	float:right;
+	padding-top:24px;
+}
+
+.article {
+	width:100%;
+	height:50px;
+	margin-bottom:10px;
+	background-color: #ABCDEF;
 }
